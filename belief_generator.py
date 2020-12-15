@@ -1,5 +1,7 @@
-v_id = 9
-v_conn = [22, 23, 24]
+# Generates module instantiations for Belief in the decoder
+
+v_id = 9 # Index of variable node
+v_conn = [22, 23, 24] # Indexes in message array of check nodes connected to v_id
 
 print("// belief of v{}".format(v_id))
 print("// channel evidence + messages going into v{}".format(v_id))

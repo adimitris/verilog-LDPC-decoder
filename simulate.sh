@@ -1,1 +1,2 @@
-iverilog -g2012 -o CtoVtb LDPC.v tb.v; ./CtoVtb
+#!/bin/sh
+iverilog -g2012 -o decoder LDPC.v tb.v; ./decoder

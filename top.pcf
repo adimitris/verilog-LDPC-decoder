@@ -1,4 +1,5 @@
-#
+# Modified version of the original blink.pcf from:
+# https://github.com/f-of-e/f-of-e-tools/tree/master/verilog/hardware/blink
 #	Pin configuration file (PCF) for place and route
 #
 #	Sets output led to pin D3 (connected to LED D14) of the

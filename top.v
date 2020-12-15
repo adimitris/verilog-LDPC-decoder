@@ -1,3 +1,5 @@
+// Modified version of the original blink.v from:
+// https://github.com/f-of-e/f-of-e-tools/tree/master/verilog/hardware/blink
 `include "LDPC.v"
 `define	kFofE_HFOSC_CLOCK_DIVIDER_FOR_1Hz	24000000
 
@@ -40,7 +42,7 @@ module blink(led);
     end
 
 	/*
-	 *	Blinks LED at approximately 1Hz. The constant kFofE_CLOCK_DIVIDER_FOR_1Hz
+	 *	Blinks LED if corrected zeroth-bit is 1. The constant kFofE_CLOCK_DIVIDER_FOR_1Hz
 	 *	(defined above) is calibrated to yield a blink rate of about 1Hz.
 	 */
 	always @(posedge clk) begin

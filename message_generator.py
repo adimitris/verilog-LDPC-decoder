@@ -1,7 +1,11 @@
-id = 24
-v_id = 9
-c_id = 3
-v_conn_not_c = [22, 23, -1]
+# Generates module instantiations for VarToCheck and CheckToVar in the decoder
+
+id = 24 # Index of message in message array
+v_id = 9 # Index of variable node
+c_id = 3 # Index of check node
+# Indexes in message array of check nodes connected to v_id excl. c_id
+v_conn_not_c = [22, 23, -1] 
+# Indexes in message array of variable nodes connected to c_id excl. v_id
 c_conn_not_v = [1, 7, 17, 20]
 
 print("// v{}-c{}: {}".format(v_id, c_id, id))
