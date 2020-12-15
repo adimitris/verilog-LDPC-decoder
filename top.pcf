@@ -1,0 +1,11 @@
+#
+#	Pin configuration file (PCF) for place and route
+#
+#	Sets output led to pin D3 (connected to LED D14) of the
+#	version of the package on the MDP board.
+#
+#	More details on pinouts here:
+#
+#		http://www.latticesemi.com/en/Products/FPGAandCPLD/iCE40UltraPlus
+#
+set_io	led D3
