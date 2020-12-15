@@ -70,7 +70,7 @@ module Belief(
 endmodule
 
 // Decoder of 10-bit codeword with 5 low-density parity-check equations
-module decoder(
+module Decoder(
   input wire signed [31:0] channelEvidence[10],
   input wire clk,
   output reg signed [31:0] channelBelief[10],

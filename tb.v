@@ -22,7 +22,7 @@ module tb;
                     .corrected_bit(tb_corrected_bit));
 
     // Testing for decoder
-    decoder decoder1(.channelEvidence(tb_channelEvidence),
+    Decoder decoder1(.channelEvidence(tb_channelEvidence),
                     .clk(clk),
                     .channelBelief(tb_channelBelief),
                     .corrected_seq(tb_corrected_seq));

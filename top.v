@@ -25,7 +25,7 @@ module blink(led);
     reg signed [31:0] channelBelief[10];
     reg corrected_seq[10];
 
-    decoder decoder1(.channelEvidence(channelEvidence),
+    Decoder decoder1(.channelEvidence(channelEvidence),
                     .clk(clk),
                     .channelBelief(channelBelief),
                     .corrected_seq(corrected_seq));
