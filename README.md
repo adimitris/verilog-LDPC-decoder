@@ -3,8 +3,7 @@
   <h3 align="center">LDPC decoder written in SystemVerilog (IEEE 1800-2012)</h3>
 </p>
 
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+<summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -21,7 +20,6 @@
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
-</details>
 
 
 
