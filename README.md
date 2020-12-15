@@ -40,8 +40,8 @@ The purpose of this project is to provide the basic software for a low-energy hi
 * `tb.v`: Tests modules `VarToCheck`, `CheckToVar`, `Belief` and `Decoder` using controlled inputs.
 * `top.v`: FPGA toplevel module. **Requires synthesiser compatible with SystemVerilog 2012**.
 * `top.pcf`: pinout for iCE40 MDP LED.
-* `belief_generator.py`: Generates verilog code for `Belief` module instantiations.
-* `message_generator.py`: Generates verilog code for `VarToCheck` and `CheckToVar` module instantiations.
+* `belief_generator.py`: Python code that generates verilog code for `Belief` module instantiations.
+* `message_generator.py`: Python code that generates verilog code for `VarToCheck` and `CheckToVar` module instantiations.
 * `simulate.sh`: Shell script to simulate `tb.v` using `iverilog`.
 
 
@@ -51,7 +51,7 @@ The purpose of this project is to provide the basic software for a low-energy hi
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get started, simply run `simulate.sh` to generate `tb.vcd`.`tb.vcd` can be opened using a wave viewer such as `gtkwave`.
+To get started, simply run `simulate.sh` to generate `tb.vcd`.`tb.vcd` can be opened using a wave viewer such as `gtkwave`. `belief_generator.py` and `message_generator.py`require a Python interpreter.
 
 ### Prerequisites
 A text editor (which can, preferably, recognise Verilog syntax), a Verilog simulator such as the open-source [iverilog](https://github.com/steveicarus/iverilog).
