@@ -1,5 +1,7 @@
 // Modified version of the original blink.v from:
 // https://github.com/f-of-e/f-of-e-tools/tree/master/verilog/hardware/blink
+
+// Requires synthesiser that supports SystemVerilog 2012 (IEEE 1800-2012)
 `include "LDPC.v"
 `define	kFofE_HFOSC_CLOCK_DIVIDER_FOR_1Hz	24000000
 
