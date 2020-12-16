@@ -30,6 +30,7 @@ The purpose of this project is to provide the basic software for a low-energy hi
 ### Structure
 
 - `LDPC.v`: Includes Verilog modules `VarToCheck`, `CheckToVar`, `Belief` and `Decoder`.
+  - `ChEvidence`: Takes as input a 10-bit sequence and returns a length-10 array of integers representing channel evidence.
   - `VarToCheck`: Takes as input 3 check-to-variable messages and a channel evidence message. It then calculates the variable-to-check message by summing the 4 input messages.
   - `CheckToVar`: Takes as input 4 variable-to-check messages and calculates the check-to-variable message by assigning its magnitude to the input message of minimum magnitude and its sign to the sign of the product of the 4 input messages.
   - `Belief`: Takes as input 3 check-to-variable messages and a channel evidence message. It then calculates variable belief by summing the 4 input messages.

@@ -1,5 +1,24 @@
 `define	kFofE_HFOSC_CLOCK_DIVIDER_FOR_1Hz	24000000
 
+// Calculates channel evidence
+module ChEvidence(
+  input wire receivedPacket[10],
+  input wire [31:0] bitErrorLogProb,
+  output reg signed [31:0] channelEvidence[10]
+  );
+  integer j;
+
+  always @*
+  begin
+    for(j = 0; j < 10; j=j+1) begin
+      if (receivedPacket[j] == 0)
+        channelEvidence[j] = bitErrorLogProb;
+      else
+        channelEvidence[j] = -bitErrorLogProb;
+    end
+  end
+endmodule
+
 // Implements the variable-to-check message
 module VarToCheck(
   input wire signed [31:0] neighbourChecks[4],
@@ -71,15 +90,17 @@ endmodule
 
 // Decoder of 10-bit codeword with 5 low-density parity-check equations
 module Decoder(
-  input wire signed [31:0] channelEvidence[10],
+  input wire receivedPacket[10],
+  input wire [31:0] bitErrorLogProb,
   input wire clk,
   output reg signed [31:0] channelBelief[10],
   output reg corrected_seq[10]
 );
   reg signed [31:0] oldVtoCm[25]; // previous variable-to-check messages
   reg signed [31:0] oldCtoVm[25]; // previous check-to-variable messages
-  reg signed [31:0] newVtoCm[25]; // current variable-to-check messages
-  reg signed [31:0] newCtoVm[25]; // current check-to-variable messages
+  wire signed [31:0] newVtoCm[25]; // current variable-to-check messages
+  wire signed [31:0] newCtoVm[25]; // current check-to-variable messages
+  wire signed [31:0] channelEvidence[10]; // channel evidence
 
   // Combinational Logic
   
@@ -703,6 +724,11 @@ module Decoder(
   assign v9m[3]=oldCtoVm[24];
 
   Belief v9(.neighbourChecks(v9m), .belief(channelBelief[9]), .corrected_bit(corrected_seq[9]));
+
+  // channel evidence
+  ChEvidence chEvidence1(.receivedPacket(receivedPacket),
+                           .bitErrorLogProb(bitErrorLogProb),
+                           .channelEvidence(channelEvidence));
 
   integer k;
   
