@@ -1,2 +1,4 @@
 *.vcd
 decoder
+.DS_Store
+README_nocommit.md

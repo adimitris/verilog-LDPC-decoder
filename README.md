@@ -25,15 +25,15 @@
 
 This is an implementation of a min-sum LDPC decoder in Verilog. The current implementation is a length-10 code with 5 low-density parity check equations. The design rate is hence 0.5 info bits per bits transmitted. The min-sum algorithm iteratively solves the linear parallel parity-check equations. 5-10 iterations should be enough for convergence.
 
-The purpose of this project is to provide the basic software for a low-energy high-speed binary decoder on an FPGA.
+The purpose of this project is to provide the basic software for a customisable low-energy high-speed binary decoder on an FPGA.
 
 ### Structure
 
 - `LDPC.v`: Includes Verilog modules `VarToCheck`, `CheckToVar`, `Belief` and `Decoder`.
   - `ChEvidence`: Takes as input a 10-bit sequence and returns a length-10 array of integers representing channel evidence.
   - `VarToCheck`: Takes as input 3 check-to-variable messages and a channel evidence message. It then calculates the variable-to-check message by summing the 4 input messages.
-  - `CheckToVar`: Takes as input 4 variable-to-check messages and calculates the check-to-variable message by assigning its magnitude to the input message of minimum magnitude and its sign to the sign of the product of the 4 input messages.
-  - `Belief`: Takes as input 3 check-to-variable messages and a channel evidence message. It then calculates variable belief by summing the 4 input messages.
+  - `CheckToVar`: Takes as input 4 variable-to-check messages and calculates the check-to-variable message by assigning its magnitude equal to to the input message of minimum magnitude and its sign to the sign of the product of the 4 input messages.
+  - `Belief`: Takes as input 3 check-to-variable messages and a channel evidence message. It then calculates the belief on the codeword bit by summing the 4 input messages. It also returns returns the corrected bit based on the value of the belief. If belief>0 then the corrected bit is 0. Otherwise it is 1.
   - `Decoder`: Instantiates 25 `VarToCheck`, 25 `CheckToVar` and 10 `Belief` modules. Updates message register array at every clock cycle
 - `tb.v`: Tests modules `VarToCheck`, `CheckToVar`, `Belief` and `Decoder` using controlled inputs.
 - `top.v`: FPGA toplevel module. **Requires synthesiser compatible with SystemVerilog 2012**.
@@ -45,7 +45,7 @@ The purpose of this project is to provide the basic software for a low-energy hi
 
 ## Getting Started
 
-To get started, simply run `simulate.sh` to generate `tb.vcd`.`tb.vcd` can be opened using a wave viewer such as `gtkwave`. `belief_generator.py` and `message_generator.py`require a Python interpreter.
+To get started, simply change lines 42-52 in `tb.v` with a specific bit-error probability and 10-bit received sequence. Then run `simulate.sh` to generate `tb.vcd`.`tb.vcd` can be opened using a wave viewer such as `gtkwave`. `belief_generator.py` and `message_generator.py`require a Python interpreter.
 
 ### Prerequisites
 
